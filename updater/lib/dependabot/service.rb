@@ -206,7 +206,7 @@ module Dependabot
     def pull_request_summary
       return unless pull_requests.any?
 
-      T.unsafe(Terminal::Table).new do |t|
+      Terminal::Table.new do |t|
         t.title = "Changes to Dependabot Pull Requests"
         t.rows = pull_requests.map { |deps, action| [action, truncate(deps)] }
       end
@@ -236,7 +236,7 @@ module Dependabot
         end
         return if job_errors.none?
 
-        T.unsafe(Terminal::Table).new do |t|
+        Terminal::Table.new do |t|
           t.title = "Errors"
           t.headings = %w(Type Details)
           t.rows = job_errors
@@ -247,7 +247,7 @@ module Dependabot
         end
         return if job_error_types.none?
 
-        T.unsafe(Terminal::Table).new do |t|
+        Terminal::Table.new do |t|
           t.title = "Errors"
           t.rows = job_error_types
         end
@@ -271,7 +271,7 @@ module Dependabot
         end
         return if dependency_errors.none?
 
-        T.unsafe(Terminal::Table).new do |t|
+        Terminal::Table.new do |t|
           t.title = "Dependencies failed to update"
           t.headings = ["Dependency", "Error Type", "Error Details"]
           t.rows = dependency_errors
@@ -282,7 +282,7 @@ module Dependabot
         end
         return if dependency_errors.none?
 
-        T.unsafe(Terminal::Table).new do |t|
+        Terminal::Table.new do |t|
           t.title = "Dependencies failed to update"
           t.rows = dependency_errors
         end
